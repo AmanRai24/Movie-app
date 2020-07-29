@@ -1,3 +1,7 @@
+# Movie App
+An application where User can view details of the different movies with their IMDB rating. User can also set the movie to its Favourite and also can remove it from there.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
