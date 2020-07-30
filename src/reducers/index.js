@@ -20,7 +20,8 @@ export function movies (state = initialMoviesState, action) {
     // return state;
 
     //In REACT WE USE SWITCH case generally
-    console.log("MOVIES REDUCER");
+    //console.log("MOVIES REDUCER");
+    
     switch(action.type) {
         case ADD_MOVIES:
             return {
@@ -56,7 +57,7 @@ export function movies (state = initialMoviesState, action) {
         };
 
         export function search(state = initialSearchState, action ){
-            console.log("SEARCH REDUCER");
+            //console.log("SEARCH REDUCER");
             return state;
         }
         
