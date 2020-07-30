@@ -19,13 +19,13 @@ class App extends React.Component {
           //dispatch action
           store.dispatch(addMovies(data));
 
-        console.log('STATE:',store.getState());
+        console.log('After dispatch STATE:',store.getState());
   }
 
    // check is movie is fav or not
    isMovieFavourite = (movie) => {
-    const { favourites } = this.props.store.getState();
-    const index = favourites.indexOf(movie);
+    const { movies } = this.props.store.getState();
+    const index = movies.favourites.indexOf(movie);
     if(index !== -1){
       console.log("Found fav. movie");
       return true;
@@ -42,8 +42,10 @@ class App extends React.Component {
   render() {
 
     //const movies = this.props.store.getState();
-    const { list, favourites, showFavourites } = this.props.store.getState();
-    console.log("RENDER",this.props.store.getState());
+    //const { list, favourites, showFavourites } = this.props.store.getState();
+    const { movies } = this.props.store.getState(); //---- extract state which is comming from reducers {movies,search}
+    const { list, favourites, showFavourites } = movies; //---- movies is an object which contian differnt items
+    console.log("RENDER in app",this.props.store.getState());
     //if showFavourites= true so displayMovie have fav list else it have all movies list
     const diaplayMovies = showFavourites ? favourites : list;
     return (
