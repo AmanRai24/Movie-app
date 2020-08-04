@@ -1,4 +1,5 @@
-import React, { createContext } from 'react';
+import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import thunk  from 'redux-thunk';
@@ -48,17 +49,56 @@ const logger = ({ dispatch, getState}) => (next) => (action) => {
 
 const store = createStore(rootReducer, applyMiddleware(logger, thunk));
 // context is user to passs the props globally so we not need to meniton it in every component
-export const StoreContext = createContext();
-class Provider extends React.Component {
-    render(){
-        const { store } = this.props;
-        return(
-            <StoreContext.Provider value={store}>
-                {this.props.children}
-            </StoreContext.Provider>
-        );
-    }
-}
+// export const StoreContext = createContext();
+// class Provider extends React.Component {
+//     render(){
+//         const { store } = this.props;
+//         return(
+//             <StoreContext.Provider value={store}>
+//                 {this.props.children}
+//             </StoreContext.Provider>
+//         );
+//     }
+// }
+
+// const connectedComponent = connect(callback)(App);
+    // export function connect(callback) {
+    //     return function (Component) {
+    //       class ConnectedComponent extends React.Component {
+    //         constructor(props) {
+    //           super(props);
+    //           this.unsubscribe = this.props.store.subscribe(() => {
+    //             this.forceUpdate();
+    //           });
+    //         }
+
+    //         componentWillUnmount() {
+    //           this.unsubscribe();
+    //         }
+    //         render() {
+    //           const { store } = this.props;
+    //           const state = store.getState();
+    //           const dataToBeSentAsProps = callback(state);
+
+    //           return <Component dispatch={store.dispatch} {...dataToBeSentAsProps} />;
+    //         }
+    //       }
+
+    //       class ConnectedComponentWrapper extends React.Component {
+    //         render() {
+    //           return (
+    //             <StoreContext.Consumer>
+    //               {(store) => {
+    //                 return <ConnectedComponent store={store} />;
+    //               }}
+    //             </StoreContext.Consumer>
+    //           );
+    //         }
+    //       }
+    //       return ConnectedComponentWrapper;
+    //     };
+    //   }
+
 //ReactDOM.render(<App store={store} />,document.getElementById('root'));
 ReactDOM.render(
     <Provider store={ store }>
