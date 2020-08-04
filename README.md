@@ -12,3 +12,12 @@ An application where User can view details of the different movies with their IM
 5. Go to https://localhost/3000 to use the application.
 6. Happy Learning.
 
+## SCREENSHOTS
+`HomePage:`
+    ![HOMEPAGE](/images/2.JPG)
+
+`Search:`
+    ![SEARCH](/images/3.JPG)
+
+`Favourites Page:`
+    ![FAVOURITES](/images/1.JPG)
