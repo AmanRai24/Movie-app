@@ -32,10 +32,10 @@ body {
 .search-results {
   position: absolute;
   background: #fff;
-  width: 100%;
+  width: 50%;
   box-sizing: border-box;
   border: 1px solid #e1e1e1;
-  top: 42px;
+  top: 60px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   z-index: 100;

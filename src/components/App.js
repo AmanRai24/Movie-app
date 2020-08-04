@@ -3,6 +3,7 @@ import { data } from '../data';
 import Navbar from "./Navbar";
 import MovieCard from "./MovieCard";
 import { addMovies, setShowFavourite } from "../actions";
+import {StoreContext} from '../index';
 
 class App extends React.Component {
 
@@ -43,15 +44,15 @@ class App extends React.Component {
 
     //const movies = this.props.store.getState();
     //const { list, favourites, showFavourites } = this.props.store.getState();
-    const { movies } = this.props.store.getState(); //---- extract state which is comming from reducers {movies,search}
-    const { list, favourites, showFavourites } = movies; //---- movies is an object which contian differnt items
+    const { movies, search } = this.props.store.getState(); //extract state which is comming from reducers {movies,search}
+    const { list, favourites, showFavourites } = movies; //movies is an object which contian differnt items
     console.log("RENDER in app",this.props.store.getState());
     //if showFavourites= true so displayMovie have fav list else it have all movies list
     const diaplayMovies = showFavourites ? favourites : list;
     return (
       <div className="App" >
 
-      <Navbar />
+      <Navbar search={search}/>
 
       <div className="main" >
         <div className="tabs" >
@@ -78,5 +79,14 @@ class App extends React.Component {
   }
 }
 
-
-export default App;
+//export default App;
+class AppWrapper extends React.Component {
+  render(){
+    return(
+      <StoreContext.Consumer>
+        {(store) => <App store={store}/>}
+      </StoreContext.Consumer>
+    );
+  }
+}
+export default AppWrapper;

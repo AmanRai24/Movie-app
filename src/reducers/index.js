@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_MOVIES, ADD_To_FAVOURITES, REMOVE_FROM_FAVOURITES, SET_SHOW_FAVOURITES } from '../actions';
+import { ADD_MOVIES, ADD_To_FAVOURITES, REMOVE_FROM_FAVOURITES, SET_SHOW_FAVOURITES, ADD_SEARCH_RESULTS, ADD_MOVIE_TO_LIST } from '../actions';
 //if action contains new state so we return that state
 //if no change in state so we return curr-state 
 // export default function movies(state=[],action){
@@ -46,6 +46,11 @@ export function movies (state = initialMoviesState, action) {
                 ...state,
                 showFavourites: action.val
             }
+        case ADD_MOVIE_TO_LIST:
+            return {
+                ...state,
+                list: [action.movie, ...state.list]
+            }
         default:
             return state;
         }
@@ -53,12 +58,28 @@ export function movies (state = initialMoviesState, action) {
     
 
         const initialSearchState = {
-            result : {}
+            result : {},
+            showSearchResults: false,
         };
 
         export function search(state = initialSearchState, action ){
             //console.log("SEARCH REDUCER");
-            return state;
+            //return state;
+            switch(action.type) {
+                case ADD_SEARCH_RESULTS:
+                    return{
+                        ...state,
+                        result: action.movie,
+                        showSearchResults: true
+                    }
+                case ADD_MOVIE_TO_LIST:
+                    return {
+                        ...state,
+                        showSearchResults: false
+                    }
+                default:
+                    return state;
+            }
         }
         
         //at begning rootReducer is call and rootreducer say that (movies : handle by moviesreducer) & (search will handle by search reducer)
@@ -72,8 +93,6 @@ export function movies (state = initialMoviesState, action) {
         //         search : search(state.search, action)
         //     }
         // }
-        
-        
         
         //it is an redux property wich automatically comboine state
         //there can be only one DEFAULT method in reducer will extract by index.js file
