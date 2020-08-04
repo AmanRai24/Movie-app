@@ -4,7 +4,6 @@ An application where User can view details of the different movies with their IM
 `API USED :` (http://www.omdbapi.com/)
 
 ## HOW TO USE AND RUN
-
 1. Clone the Project or download the zip folder.
 2. Go to Folder using `cd Movie-app`.
 3. Run following command to install all require libraries.
