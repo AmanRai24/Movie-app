@@ -11,3 +11,4 @@ An application where User can view details of the different movies with their IM
 4. Run command to start the server `npm start`
 5. Go to https://localhost/3000 to use the application.
 6. Happy Learning.
+
