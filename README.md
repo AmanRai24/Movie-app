@@ -13,7 +13,6 @@ An application where User can view details of the different movies with their IM
 6. Happy Learning.
 
 ## SCREENSHOTS
-
 `HomePage:`
 
 ![HOMEPAGE](/images/2.JPG)
